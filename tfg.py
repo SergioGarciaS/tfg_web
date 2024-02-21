@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup
 import json
 
 diccionario = {}
-#url = 'https://dblp.org/pid/r/GregorioRobles.html'
+url = 'https://dblp.org/pid/r/GregorioRobles.html'
 #url = 'https://dblp.org/pid/66/1148.html'
 #url = 'https://dblp.org/pid/117/9939.html'
-url = 'https://dblp.org/db/journals/peerj-cs/peerj-cs7.html#DuenasCGFICG21'
+#url = 'https://dblp.org/db/journals/peerj-cs/peerj-cs7.html#DuenasCGFICG21'
 
 # Solicitud de HTTP
 headers = {
@@ -18,7 +18,7 @@ headers = {
 response = requests.get(url,headers=headers)
 
 def autores():
-""" Se extraen los autores, se cuentan y se ordenan de mayor a menor"""
+    """ Se extraen los autores, se cuentan y se ordenan de mayor a menor"""
     if response.status_code == 200:
 
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -86,5 +86,5 @@ def articulo():
         print("Tarea realizada con éxito.")
     else:
         print('Error al realizar la solicitud HTTP:', response.status_code)    
-        
+
 articulo()
