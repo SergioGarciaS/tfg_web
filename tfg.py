@@ -18,7 +18,7 @@ headers = {
 response = requests.get(url,headers=headers)
 
 def autores():
-""" Se extraen los autores """
+""" Se extraen los autores, se cuentan y se ordenan de mayor a menor"""
     if response.status_code == 200:
 
         soup = BeautifulSoup(response.text, 'html.parser')
