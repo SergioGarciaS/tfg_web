@@ -21,5 +21,6 @@ def comparacion_busqueda(busqueda1, busqueda2):
 
 """ LEER DE DIRECTORIO PARA COMPARAR """
 busqueda = AR.lectura_archivos_directorio('./comparaciones')
-comparacion_busqueda(busqueda[0], busqueda[1])
+print(busqueda)
+comparacion_busqueda('./comparaciones/' + busqueda[0], './comparaciones/' + busqueda[1])
 print(AR.ordenar_print(claves_comunes))
