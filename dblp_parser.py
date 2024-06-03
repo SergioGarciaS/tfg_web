@@ -58,7 +58,7 @@ def parse_record(dblp, db_path):
         try:
             # Insertamos los datos en la tabla
             c.execute("INSERT INTO records (genre, title, author, year, booktitle, ee, crossref, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                      (attrs['genre'], attrs.get('title', [''])[0], '|'.join(attrs.get('author', [])), attrs.get('year', [''])[0],attrs.get('booktitle', [''])[0],attrs.get('ee', [''])[0],attrs.get('crossref', [''])[0],attrs.get('url', [''])[0]))
+                      (attrs['genre'], attrs.get('title', [''])[0], '|'.join(author for author in attrs.get('author', []) if author is not None), attrs.get('year', [''])[0],attrs.get('booktitle', [''])[0],attrs.get('ee', [''])[0],attrs.get('crossref', [''])[0],attrs.get('url', [''])[0]))
         except ValueError as err:
             print(err)
             continue

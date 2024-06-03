@@ -22,6 +22,7 @@ if __name__ == "__main__":
 
     args = opciones_dblp_output()
     start_time = time.time()
+    print("Se comienza el parseo del xml")
     parse_record(args.dblp, args.output)
     end_time = time.time()
     tiempo_total = end_time - start_time
