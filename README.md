@@ -38,6 +38,8 @@ ejecutar el comando:
 
 python3 extracción_datos_concreto.py
 
+Te devuelve un JSON en el cual se guardan diccionarios por cada Bookmark.
+
 Aquí es cuando se ejecuta un servidor json:
 
 el cual se instala y ejecuta de la siguiente manera: https://github.com/typicode/json-server
@@ -47,3 +49,31 @@ el cual se instala y ejecuta de la siguiente manera: https://github.com/typicode
     3º Se ejecuta el json-server --watch json.js (--port port)
 
 Con esto tenemos un servidor json para lanzar la API.
+
+El servidor en el que contenemos la API se lanza de la siguiente manera:
+
+	json-server --watch out.json --port 4400
+
+Cuyo resultado nos devuelve:
+
+    \{^_^}/ hi!
+
+    Loading out.json
+    Done
+
+    Resources
+    http://localhost:4400/ICSME
+    http://localhost:4400/MSR
+    http://localhost:4400/FSKD
+    http://localhost:4400/GECCO
+    http://localhost:4400/SDM
+
+    Home
+    http://localhost:4400
+
+
+Lo siguiente es abrir el archivo /web/index.html, en dicha web se puede observar 3 gráficos:
+
+1º Autores que más aparecen en el primer Bookmark configurado.
+2º Autores que más aparecen en el segundo Bookmark configurado.
+3º Autores que más aparecen coincidentes en ambos.
