@@ -20,8 +20,7 @@ Se descomprime el archivo en el directorio:
     gzip -d dblp.xml.gz
 
 1. Para exportar el XML a db se debe de ejecutar el siguiente comando:
-a
-
+    
     python3 main_dblp_parser.py --dblp dblp.xml --output DBLP.db
 
 Este proceso tarda alrededor de 5-6 minutos, se exportan las siguientes columnas con sus
