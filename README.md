@@ -1,17 +1,22 @@
 # COMPARACIÓN AUTORES DBLP
 
 Modo de uso: 
-Se descarga el archivo dblp.xml.gz y dblp.dtd en el mismo directorio desde la URL: https://dblp.org/xml/
+Se descarga el archivo dblp.xml.gz y dblp.dtd en el mismo directorio donde se hace el gitclon del proyecto, desde la URL: https://dblp.org/xml/
 
 
 Puedes descargarlo a mano o con el comando wget, para ello tienes que instalar:
-    wget:apt-get install wget
-y mas tarde desgargar los archivos con el comando: 
+    wget: 
+    
+    apt-get install wget
+
+y mas tarde descargar los archivos con el comando: 
+    
     wget https://dblp.org/xml/dblp.dtd
     wget https://dblp.org/xml/dblp.xml.gz
 
 
 Se descomprime el archivo en el directorio: 
+    
     gzip -d dblp.xml.gz
 
 1. Para exportar el XML a db se debe de ejecutar el siguiente comando:
