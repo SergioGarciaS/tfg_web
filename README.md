@@ -75,5 +75,9 @@ Cuyo resultado nos devuelve:
 Lo siguiente es abrir el archivo /web/index.html, en dicha web se puede observar 3 gráficos:
 
 1º Autores que más aparecen en el primer Bookmark configurado.
+![Primeros_autores](./im_readme/ICSME.png)
+
 2º Autores que más aparecen en el segundo Bookmark configurado.
+![Segundos_autores](./im_readme/MSR.png)
 3º Autores que más aparecen coincidentes en ambos.
+![Segundos_autores](./im_readme/Comunes.png)
