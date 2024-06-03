@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFG Sergio GS</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+
+        <h1>TFG Sergio</h1>
+        <p>Visualización de estadísticas globales</p>
+
+        <hr>
+
+        <section class="cols-2">
+
+            <figure>
+                <h2>Autores mas presentes en ICSME</h2>
+                <canvas id="modelsChart"></canvas>
+            </figure>
+            <figure>
+                <h2>Autores mas presentes en MSR</h2>
+                <canvas id="modelsChart2"></canvas>
+            </figure>
+
+
+
+
+        </section>
+
+        <section class="cols-1">
+            <figure>
+                <h2>Autores Comunes entre booktitle</h2>
+                <canvas id="combineAuthor"></canvas>
+            </figure>
+
+            <!-- <figure>
+                <h2>Comparativa de características:
+                    <select id="featuresOptions">
+                        <option value="height">TOP Iguales</option>
+                        <option value="length">TOP Distintos</option>
+                    </select>
+                </h2>
+                <canvas id="featuresChart"></canvas>
+            </figure> -->
+        </section>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+    <script src="js/helpers.js"></script>
+    <script src="js/handlers.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

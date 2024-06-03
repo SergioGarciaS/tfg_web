@@ -17,23 +17,25 @@ def lectura_archivos_directorio(ruta):
 
 
 
-def db_to_json(filedb, filejson,dato):
+def db_to_json(filedb, filejson, datos):
     columnas = ['id','genre', 'title', 'author', 'year', 'booktitle', 'ee', 'crossref', 'url']
     conexion = sqlite3.connect(filedb)
     cursor = conexion.cursor()
+    datos_json = {}
+    for dato in datos:
+        # Consulta en BBDD
+        cursor.execute("SELECT * FROM 'records' WHERE booktitle = '{dato}'".format(dato=dato))
+        datos = cursor.fetchall()
 
-    # Consulta en BBDD
-    cursor.execute("SELECT * FROM 'records' WHERE booktitle = '{dato}'".format(dato=dato))
-    datos = cursor.fetchall()
+        registros = []
+        for fila in datos:
+            print(fila)
+            fila_dict = {}
+            for i, columna in enumerate(columnas):
+                fila_dict[columna] = fila[i]
+            registros.append(fila_dict)
 
-    datos_json = []
-    for fila in datos:
-        print(fila)
-        fila_dict = {}
-        for i, columna in enumerate(columnas):
-            fila_dict[columna] = fila[i]
-        datos_json.append(fila_dict)
-
+        datos_json[dato] = registros
     # Guardar a JSON
     with open(filejson, 'w') as archivo_json:
         json.dump(datos_json, archivo_json, indent=4)
@@ -68,7 +70,7 @@ def ordenar_print(autores):
 
 
 #author_read('salida.json')
-
-#db_to_json('juanito2.db','ICSME.json')
+datos = ["ICSME","MSR","FSKD","GECCO","SDM"]
+db_to_json('DBLP.db','out.json',datos)
 
 #lectura_archivos_directorio('./comparaciones')
