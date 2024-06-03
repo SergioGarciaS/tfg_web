@@ -1,5 +1,5 @@
 Modo de uso: 
-Se descarga el archivo dblp.xml.gz de la URL: https://dblp.org/xml/
+Se descarga el archivo dblp.xml.gz y dblp.dtd en el mismo directorio desde la URL: https://dblp.org/xml/
 
 Se descomprime el archivo en el directorio: gzip -d dblp.xml.gz
 
@@ -10,14 +10,19 @@ python3 main_dblp_parser.py --dblp dblp.xml --output DBLP.db
 Este proceso tarda alrededor de 5-6 minutos, se exportan las siguientes columnas con sus
 formatos:
 
-    genre TEXT, 
-    title TEXT, 
-    author TEXT, 
-    year TEXT, 
-    booktitle TEXT, 
-    ee TEXT, 
-    crossref TEXT, 
-    url TEXT
+    genre 
+    title 
+    author 
+    year 
+    booktitle 
+    ee 
+    crossref 
+    url
+
+Pudiéndose visualizar en la siguiente url:
+    https://inloop.github.io/sqlite-viewer/
+
+![Grafico_db](./im_readme/grafico_db.png)
 
 2º Una vez que se obtiene la salida como base de datos, ya se puede operar y extaer los
 datos en un json.
@@ -39,7 +44,7 @@ Dicho json tiene como formato:
 Para obtener dicho json se debe crear una lista con los "booktitle" que quieras extraer y 
 ejecutar el comando: 
 
-python3 extracción_datos_concreto.py
+python3 extraccion_datos_concretos.py
 
 Te devuelve un JSON en el cual se guardan diccionarios por cada Bookmark.
 
@@ -48,8 +53,12 @@ Aquí es cuando se ejecuta un servidor json:
 el cual se instala y ejecuta de la siguiente manera: https://github.com/typicode/json-server
 
     1º Se instala node.js
+        sudo apt install nodejs
     2º Se instala la librería npm.
-    3º Se ejecuta el json-server --watch json.js (--port port)
+        sudo apt install npm
+    3º Se instala el json-server
+        npm install json-server
+    4º Se ejecuta el json-server --watch json.js (--port port)
 
 Con esto tenemos un servidor json para lanzar la API.
 
