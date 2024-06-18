@@ -55,7 +55,7 @@ def db_to_json(filedb, filejson, datos):
 
         registros = []
         for fila in datos:
-            print(fila)
+            #print(fila)
             fila_dict = {}
             for i, columna in enumerate(columnas):
                 fila_dict[columna] = fila[i]
@@ -68,11 +68,7 @@ def db_to_json(filedb, filejson, datos):
 
     conexion.close()
 
-
-
-
+datos = ["ICSME","MSR"]
+db_to_json('DBLP.db','out.json', datos)
 #author_read('salida.json')
-#datos = ["ICSME","MSR"]
-#db_to_json('DBLP.db','out.json', datos)
-
 #print(lectura_archivos_directorio('./comparaciones'))
