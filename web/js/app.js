@@ -22,12 +22,13 @@ const renderModelsChart = bookmark => {
     bookmark.forEach(icsme => {
         const authors = icsme.author.split('|'); // Separar autores si están separados por |
         authors.forEach(author => {
-            if (authorCount[author]) {
-                authorCount[author]++;
-            } else {
-                authorCount[author] = 1;
-            }
-        });
+            if (author !== ''){
+		    if (authorCount[author]) {
+		        authorCount[author]++;
+		    } else {
+		        authorCount[author] = 1;
+		    }
+        	}});
     });
 
     // Convertir el objeto de frecuencias a un arreglo y ordenar por frecuencia
@@ -63,12 +64,13 @@ const renderModelsChart2 = bookmark => {
     bookmark.forEach(icsme => {
         const authors = icsme.author.split('|'); // Separar autores si están separados por |
         authors.forEach(author => {
-            if (authorCount[author]) {
-                authorCount[author]++;
-            } else {
-                authorCount[author] = 1;
-            }
-        });
+             if (author !== ''){
+		    if (authorCount[author]) {
+		        authorCount[author]++;
+		    } else {
+		        authorCount[author] = 1;
+		    }
+        	}});
     });
 
     // Convertir el objeto de frecuencias a un arreglo y ordenar por frecuencia
