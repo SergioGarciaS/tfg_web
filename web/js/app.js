@@ -1,3 +1,6 @@
+
+
+
 Chart.defaults.color = '#fff'
 Chart.defaults.borderColor = '#444'
 
@@ -102,6 +105,8 @@ const renderModelsChart2 = bookmark => {
 
 const renderTopSharedAuthorsChart = (dataset1, dataset2) => {
     // Función para contar la frecuencia de los autores
+
+
     const countAuthors = dataset => {
         const authorCount = {};
         dataset.forEach(record => {
@@ -117,48 +122,56 @@ const renderTopSharedAuthorsChart = (dataset1, dataset2) => {
         return authorCount;
     };
 
+
     // Contar la frecuencia de los autores en ambos conjuntos de datos
     const authorCount1 = countAuthors(dataset1);
     console.log("pasaporaqui")
     const authorCount2 = countAuthors(dataset2);
 
-    // Encontrar los autores comunes y calcular las frecuencias combinadas
-    const sharedAuthors = {};
-    for (const author in authorCount1) {
-        if (authorCount2[author]) {
-            sharedAuthors[author] = authorCount1[author] - authorCount2[author];
+    const authorsSet1 = new Set(Object.keys(authorCount1));
+    const authorsSet2 = new Set(Object.keys(authorCount2));
+
+    console.log("pasaporaqui2")
+    const intersection = new Set([...authorsSet1].filter(x => authorsSet2.has(x)));
+    console.log(intersection)
+    const onlyInSet1 = new Set([...authorsSet1].filter(x => !authorsSet2.has(x)));
+
+    const onlyInSet2 = new Set([...authorsSet2].filter(x => !authorsSet1.has(x)));  
+    console.log(typeof onlyInSet1)
+    console.log(onlyInSet1)
+    console.log(onlyInSet2.size)
+    console.log(intersection.size)
+
+    const data = ChartVenn.extractSets (
+        [
+        { label: "MSR", values: [...authorsSet1]},
+        { label: "ICSME",values: [...authorsSet2]},
+
+        ],
+        {
+      
+        
         }
-    }
-
-    // Ordenar los autores comunes por la frecuencia combinada y seleccionar los 20 principales
-    const sortedSharedAuthors = Object.entries(sharedAuthors).sort((a, b) => b[1] - a[1]).slice(0, 100);
-    const topAuthors = sortedSharedAuthors.map(entry => entry[0]);
-    const topCounts = sortedSharedAuthors.map(entry => entry[1]);
-
-    // Configurar los datos del gráfico
-    const data = {
-        labels: topAuthors,
-        datasets: [{
-            label: 'Veces Compartidas',
-            data: topCounts,
-            borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)'
-        }]
-    };
-
-    const options = {
-        plugins: {
-            legend: { position: 'top' },
-            title: {
-                display: true,
-                text: '20 Autores Más Compartidos entre ICSME y MSR'
-            }
-        }
-    };
-
-    // Renderizar el gráfico
-    new Chart('combineAuthor', { type: 'bar', data, options });
+    );
+      
+      const ctx = document.getElementById('vennChart').getContext('2d');
+      //console.log(ctx)
+      const chart = new Chart(ctx, {
+        type: 'venn',
+        data: data,
+        options: {
+          display: true,  
+          backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(75, 192, 192, 0.5)'],
+          title: {
+            
+            responsive: true,
+            text: 'Chart.js Venn Diagram Chart',
+            
+          },
+        },
+      });
 };
+
 
 
 printCharts()

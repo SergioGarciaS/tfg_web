@@ -7,7 +7,7 @@
 body {
   background: #181f38;
   font-family: 'Poppins', monospace;
-  color: white;
+  color: rgb(250, 250, 250);
   font-size: .7em;
   font-weight: 200;
   letter-spacing: 1px;
@@ -38,8 +38,9 @@ h2 {
 }
 
 
+
 hr {
-    border-color: white;
+    border-color: rgb(211, 15, 15);
     margin: 10px 0;
 }
 
@@ -93,3 +94,4 @@ canvas {
         width: 100%;
     }
 }
+

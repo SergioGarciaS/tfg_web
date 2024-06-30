@@ -8,3 +8,9 @@ const getDataColors = opacity => {
     return colors.map(color => opacity ? `${color + opacity}` : color)
 }
 
+const updateChartData = (chartId, data, label) => {
+    const chart = Chart.getChart(chartId)
+    chart.data.datasets[0].data = data
+    chart.data.datasets[0].label = label
+    chart.update()
+}

@@ -14,45 +14,39 @@
 
         <h1>TFG Sergio</h1>
         <p>Visualización de estadísticas globales</p>
+    
 
-        <hr>
+        <h2>Años:</h2>
+        <select id="featuresOptions">
+            <option value="OneYear">1 año</option>
+            <option value="fiveYears">5 años</option>
+            <option value="All_time">Todo el tiempo</option>
+        </select>
+        
 
         <section class="cols-2">
-
             <figure>
-                <h2>Autores mas presentes en ICSME</h2>
+                <h2>Autores más presentes en ICSME</h2>
                 <canvas id="modelsChart"></canvas>
             </figure>
             <figure>
-                <h2>Autores mas presentes en MSR</h2>
+                <h2>Autores más presentes en MSR</h2>
                 <canvas id="modelsChart2"></canvas>
             </figure>
-
-
-
-
         </section>
 
+        
         <section class="cols-1">
             <figure>
                 <h2>Autores Comunes entre booktitle</h2>
-                <canvas id="combineAuthor"></canvas>
+                <canvas id="vennChart"></canvas>
             </figure>
-
-            <!-- <figure>
-                <h2>Comparativa de características:
-                    <select id="featuresOptions">
-                        <option value="height">TOP Iguales</option>
-                        <option value="length">TOP Distintos</option>
-                    </select>
-                </h2>
-                <canvas id="featuresChart"></canvas>
-            </figure> -->
         </section>
 
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-venn"></script>
 
     <script src="js/helpers.js"></script>
     <script src="js/handlers.js"></script>
