@@ -1,6 +1,3 @@
-
-
-
 Chart.defaults.color = '#fff'
 Chart.defaults.borderColor = '#444'
 
@@ -14,9 +11,6 @@ const printCharts = () => {
         renderTopSharedAuthorsChart(ICSME,MSR)
 
     })
-
-
-
 }
 
 const renderModelsChart = bookmark => {
@@ -144,9 +138,8 @@ const renderTopSharedAuthorsChart = (dataset1, dataset2) => {
 
     const data = ChartVenn.extractSets (
         [
-        { label: "MSR", values: [...authorsSet1]},
         { label: "ICSME",values: [...authorsSet2]},
-
+        { label: "MSR", values: [...authorsSet1]},
         ],
         {
       

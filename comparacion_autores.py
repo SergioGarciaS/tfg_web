@@ -89,7 +89,6 @@ def search_comparison_per_year(file, opt1, opt2, start_year, num_years):
 if __name__== "__main__":
 
     year = datetime.today().year
-    autores =author_read('out.json', "MSR")
 
 
     #autores1 = authors_per_year("out.json", 2017, "MSR")
