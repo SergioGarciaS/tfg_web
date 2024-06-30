@@ -92,8 +92,8 @@ if __name__== "__main__":
 
 
     #autores1 = authors_per_year("out.json", 2017, "MSR")
-    autores1 = authors_some_year("out.json", year, 45, "MSR")
-    autores2 = authors_some_year("out.json", year, 45, "ICSME")
+    autores1 = authors_some_year("out.json", 2024, 40, "MSR")
+    autores2 = authors_some_year("out.json", 2024, 40, "ICSME")
 
     # print(autores1)
     print("================================")
@@ -103,4 +103,4 @@ if __name__== "__main__":
     print("             ICSME")
     sort_print(autores2)
 
-    search_comparison_per_year('out.json', 'MSR', 'ICSME', year , 45)
+    search_comparison_per_year('out.json', 'MSR', 'ICSME', 2024 , 40)

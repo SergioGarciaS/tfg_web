@@ -6,14 +6,14 @@ const printCharts = () => {
     fetchAuthorsData('http://localhost:4400/ICSME', 'http://localhost:4400/MSR')
     .then(([ICSME, MSR]) => {
         console.log(ICSME,MSR)
-        renderModelsChart(ICSME)
-        renderModelsChart2(MSR)
-        renderTopSharedAuthorsChart(ICSME,MSR)
-
+        renderAuthorsChart(ICSME)
+        renderAuthorsChart2(MSR)
+        renderAuthorsVennChart(ICSME,MSR)
+        enableEventHandlers(MSR)
     })
 }
 
-const renderModelsChart = bookmark => {
+const renderAuthorsChart = bookmark => {
     // Contar la frecuencia de cada autor
     const authorCount = {};
     bookmark.forEach(icsme => {
@@ -55,7 +55,7 @@ const renderModelsChart = bookmark => {
     new Chart('modelsChart', { type: 'doughnut', data, options });
 };
 
-const renderModelsChart2 = bookmark => {
+const renderAuthorsChart2 = bookmark => {
     // Contar la frecuencia de cada autor
     const authorCount = {};
     bookmark.forEach(icsme => {
@@ -97,7 +97,7 @@ const renderModelsChart2 = bookmark => {
     new Chart('modelsChart2', { type: 'polarArea', data, options });
 };
 
-const renderTopSharedAuthorsChart = (dataset1, dataset2) => {
+const renderAuthorsVennChart = (dataset1, dataset2) => {
     // Función para contar la frecuencia de los autores
 
 
@@ -141,10 +141,9 @@ const renderTopSharedAuthorsChart = (dataset1, dataset2) => {
         { label: "ICSME",values: [...authorsSet2]},
         { label: "MSR", values: [...authorsSet1]},
         ],
-        {
-      
-        
-        }
+        // {
+
+        // }
     );
       
       const ctx = document.getElementById('vennChart').getContext('2d');
