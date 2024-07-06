@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from itertools import combinations
 
 
 def author_read(file,opt):
@@ -11,7 +12,7 @@ def author_read(file,opt):
 
         year = fila.get('year')  # Obtener el año, si está disponible en cada fila
         for autor in fila['author'].split('|'):
-            if autor:
+            if autor != '':
                 if autor in conteo_autores:
                     conteo_autores[autor][0] += 1
                     conteo_autores[autor][1].append(int(year))
@@ -71,36 +72,40 @@ def search_comparison(file, opt1, opt2):
     print(f"{opt1}: {abs(len(dic3)-len(Search1))} {opt2}: {abs(len(dic3)-len(Search2))} DIF: {len(dic3)}")
 
 
-def search_comparison_per_year(file, opt1, opt2, start_year, num_years):
+def search_comparison_per_year(file, options, start_year, num_years):
+    conjuntos = []
+    for opt in options:
+        opt = authors_some_year(file, start_year, num_years,opt)
+        conjuntos.append(opt)
 
-    Search1 = authors_some_year(file, start_year, num_years,opt1)
-   
-    Search2 = authors_some_year(file, start_year, num_years,opt2)
+    congresos = ["MSR","SANER","ICSME","ESEM","MODELS"]
 
-    dic3 = set(Search2).intersection(set(Search1))
+    for i in range(len(conjuntos)):
+        for j in range(i + 1, len(conjuntos)):
+            interseccion = set(conjuntos[i]).intersection(set(conjuntos[j]))
+            print(f"{congresos[i]} ∩ {congresos[j]}: {len(interseccion)}")
+    
 
-    print("================================")
-    print("        INTERSECCIÓN:")
-    print("================================")
+    for r in range(3, len(conjuntos) + 1):
+        for combo in combinations(range(len(conjuntos)), r):
+            interseccion = set(conjuntos[combo[0]])
+            nombres_congresos = congresos[combo[0]]
+            for k in combo[1:]:
+                interseccion = interseccion.intersection(conjuntos[k])
+                nombres_congresos += f" ∩ {congresos[k]}"
+            print(f"{nombres_congresos}: {len(interseccion)}")
 
-    print(f"{opt1}: {abs(len(dic3)-len(Search1))} {opt2}: {abs(len(dic3)-len(Search2))} DIF: {len(dic3)} \n\n")
 
 
 if __name__== "__main__":
 
     year = datetime.today().year
+    datos = ["MSR","SANER","ICSME","ESEM","MODELS"]
+    for opt in datos:
+        print("================================")
+        print("             ", opt)
+        print(sort_print(authors_some_year("out.json", 2024, 40, opt)))
 
-
-    #autores1 = authors_per_year("out.json", 2017, "MSR")
-    autores1 = authors_some_year("out.json", 2024, 40, "MSR")
-    autores2 = authors_some_year("out.json", 2024, 40, "ICSME")
-
-    # print(autores1)
-    print("================================")
-    print("             MSR")
-    sort_print(autores1)
-    print("================================")
-    print("             ICSME")
-    sort_print(autores2)
-
-    search_comparison_per_year('out.json', 'MSR', 'ICSME', 2024 , 40)
+    print(year)
+    datos = ["MSR","SANER,CSMR","ICSME","ESEM","MODELS"]
+    search_comparison_per_year('out.json', ["MSR","SANER","ICSME","ESEM","MODELS"], year , 40)

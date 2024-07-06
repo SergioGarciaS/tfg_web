@@ -9,19 +9,25 @@ def db_to_json(filedb, filejson, datos):
     cursor = conexion.cursor()
     datos_json = {}
     for dato in datos:
-        # Consulta en BBDD
-        cursor.execute("SELECT * FROM 'records' WHERE booktitle = '{dato}'".format(dato=dato))
+        subdatos = dato.split(",")
+        orden = "SELECT * FROM 'records' WHERE"
+        for idx, sub in enumerate(subdatos):
+            if idx == 0:
+                orden = orden + " booktitle = '" + sub + "'"
+            else:
+                orden = orden + " or booktitle = '" + sub + "'"
+        print(orden)
+        cursor.execute(orden)
         datos = cursor.fetchall()
 
         registros = []
         for fila in datos:
-            #print(fila)
             fila_dict = {}
             for i, columna in enumerate(columnas):
                 fila_dict[columna] = fila[i]
             registros.append(fila_dict)
 
-        datos_json[dato] = registros
+        datos_json[subdatos[0]] = registros
     # Guardar a JSON
     with open(filejson, 'w') as archivo_json:
         json.dump(datos_json, archivo_json, indent=4)
@@ -29,8 +35,7 @@ def db_to_json(filedb, filejson, datos):
     conexion.close()
 
 if __name__== "__main__":
-
-    datos = ["MSR","ICSME","FSKD"]
-    db_to_json('../tfg/DBLP.db','out.json', datos)
-    #author_read('salida.json')
-    #print(lectura_archivos_directorio('./comparaciones'))
+    
+    # En datos incluimos los congresos a utilizar
+    datos = ["MSR","SANER,CSMR","ICSME","ESEM","MODELS"]
+    db_to_json('DBLP.db','out.json', datos)
