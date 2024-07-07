@@ -19,11 +19,19 @@ html {
 }
 
 main {
-    padding: 60px;
+    padding-top: 20px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 section {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+figure:has(#modelsChart5) {
+    margin-left: 10px;
+    transform-origin: top left; /* Establece el punto de origen de la transformación */
+    width: 49%;
+    height: 49%;
 }
 
 h1 {
@@ -50,8 +58,9 @@ figure, canvas {
 }
 
 canvas {
-    width: 100%;
+    width: 25%;
 }
+
 
 
 /* grid */
@@ -94,4 +103,18 @@ canvas {
         width: 100%;
     }
 }
-
+select {
+    margin-bottom: 10px;
+    width:300px;
+    height:50px;
+    margin-top: 10px;
+    font-family: cursive, sans-serif;
+    font-size: 22pt;
+    font-display: center;
+    outline: 0;
+    background: #181f38;
+    color: #a0baec;
+    border: 1px solid rgb(53, 57, 82);
+    padding: 4px;
+    border-radius: 9px;
+  }

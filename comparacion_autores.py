@@ -56,8 +56,8 @@ def sort_print(autores):
     contador = 0
     for autor, conteo in conteo_autores_ordenado.items():
         if contador < 20:
-            print(f"{contador}. {autor}: \t  {conteo} veces")
             contador = contador + 1 
+            print(f"{contador}. {autor}: \t  {conteo} veces")
         else:
             break
 
@@ -106,6 +106,6 @@ if __name__== "__main__":
         print("             ", opt)
         print(sort_print(authors_some_year("out.json", 2024, 40, opt)))
 
-    print(year)
+
     datos = ["MSR","SANER,CSMR","ICSME","ESEM","MODELS"]
-    search_comparison_per_year('out.json', ["MSR","SANER","ICSME","ESEM","MODELS"], year , 40)
+    search_comparison_per_year('out.json', ["MSR","SANER","ICSME","ESEM","MODELS"], year , 50)

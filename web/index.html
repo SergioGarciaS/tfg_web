@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TFG Sergio GS</title>
+    <link rel="icon" type="image/jpg" href="icon.jpg"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -25,7 +26,14 @@
             
         </select>
         
+        <section class="cols-1">
 
+            <figure>
+                <h2>Diagrama de Venn</h2>
+                <canvas id="vennChart"></canvas>
+            </figure>
+        </section>
+        
         <section class="cols-2">
             <figure>
                 <h2>Autores más presentes en ICSME</h2>
@@ -37,13 +45,24 @@
             </figure>
         </section>
 
-
-        <section class="cols-1">
+        <section class="cols-2">
             <figure>
-                <h2>Diagrama de Venn</h2>
-                <canvas id="vennChart"></canvas>
+                <h2>Autores más presentes en ESEM</h2>
+                <canvas id="modelsChart3"></canvas>
             </figure>
+            <figure>
+                <h2>Autores más presentes en MODELS</h2>
+                <canvas id="modelsChart4"></canvas>
+            </figure>
+
         </section>
+        <section class="cols-3"></section>
+        <figure>
+            <h2>Autores más presentes en SANER</h2>
+            <canvas id="modelsChart5"></canvas>
+        </figure>
+        </section>
+
 
     </main>
 
@@ -52,7 +71,7 @@
 
     <script src="js/helpers.js"></script>
     <script src="js/handlers.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/apps.js"></script>
 </body>
 
 </html>
