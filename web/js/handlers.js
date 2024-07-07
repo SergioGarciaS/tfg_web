@@ -24,7 +24,7 @@ const filterAuthorsByYears = (authors, startYear, numYears) => {
 const enableEventHandlers = (ICSME, MSR, ESEM, MODELS, SANER) => {
     document.querySelector('#featuresOptions').onchange = e => {
         const { value: property, text: label } = e.target.selectedOptions[0];
-        const currentYear = "2023"; // Año actual
+        const currentYear = "2023"; // Último año natural completo
 
         let datasets = { ICSME, MSR, ESEM, MODELS, SANER };
         let charts = ['modelsChart', 'modelsChart2', 'modelsChart3', 'modelsChart4', 'modelsChart5','vennChart'];
@@ -87,6 +87,7 @@ const filterAuthorsByYears_venn = (authors, startYear, numYears) => {
 const updateVennChart = (dataset1, dataset2, dataset3, dataset4, dataset5, property, currentYear) => {
 
     const authorNamesFromDataset = dataset => {
+        
         return filterAuthorsByYears_venn(dataset, currentYear, property).map(record => record.name);
     };
 

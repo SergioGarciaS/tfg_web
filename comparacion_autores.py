@@ -99,7 +99,7 @@ def search_comparison_per_year(file, options, start_year, num_years):
 
 if __name__== "__main__":
 
-    year = datetime.today().year
+    # year = datetime.today().year
     datos = ["MSR","SANER","ICSME","ESEM","MODELS"]
     for opt in datos:
         print("================================")
@@ -108,4 +108,4 @@ if __name__== "__main__":
 
 
     datos = ["MSR","SANER,CSMR","ICSME","ESEM","MODELS"]
-    search_comparison_per_year('out.json', ["MSR","SANER","ICSME","ESEM","MODELS"], year , 50)
+    search_comparison_per_year('out.json', ["MSR","SANER","ICSME","ESEM","MODELS"], 2023 , 10)

@@ -38,4 +38,4 @@ if __name__== "__main__":
     
     # En datos incluimos los congresos a utilizar
     datos = ["MSR","SANER,CSMR","ICSME","ESEM","MODELS"]
-    db_to_json('DBLP.db','out.json', datos)
+    db_to_json('../tfg_webas/DBLP.db','out.json', datos)

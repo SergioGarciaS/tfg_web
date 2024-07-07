@@ -100,9 +100,6 @@ const renderAuthorsVennChart = (dataset1, dataset2,dataset3, dataset4, dataset5)
         { label: "MODELS", values: [...authorsSet4]},
         { label: "SANER", values: [...authorsSet5]},
         ],
-        // {
-
-        // }
     );
     
       const ctx = document.getElementById('vennChart').getContext('2d');

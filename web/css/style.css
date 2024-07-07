@@ -29,7 +29,7 @@ section {
 }
 figure:has(#modelsChart5) {
     margin-left: 10px;
-    transform-origin: top left; /* Establece el punto de origen de la transformación */
+    transform-origin: top left; 
     width: 49%;
     height: 49%;
 }
