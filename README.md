@@ -109,7 +109,7 @@ Cuyo resultado nos devuelve:
 - Autores que más aparecen en el segundo Bookmark configurado.
 ![Segundos_autores](./im_readme/MSR.png)
 - Autores que más aparecen coincidentes en ambos.
-![Segundos_autores](./im_readme/Comunes.png)
+![Segundos_autores](./im_readme/venn.png)
 
 
 Dicha Web utiliza la librería Char.js (https://www.chartjs.org/)
