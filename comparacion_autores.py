@@ -44,6 +44,7 @@ def authors_some_year(file, start_year, num_years,opt):
             else:
                 resultados[autor] = count
 
+    print(f" de {opt} es {len(resultados)}")
     return resultados
 
 
@@ -79,12 +80,15 @@ def search_comparison_per_year(file, options, start_year, num_years):
         conjuntos.append(opt)
 
     congresos = ["MSR","SANER","ICSME","ESEM","MODELS"]
-
+    print("================================")
     for i in range(len(conjuntos)):
         for j in range(i + 1, len(conjuntos)):
             interseccion = set(conjuntos[i]).intersection(set(conjuntos[j]))
-            print(f"{congresos[i]} ∩ {congresos[j]}: {len(interseccion)}")
-    
+            print(f"{congresos[i]} ∩ {congresos[j]}: {len(interseccion)}" )
+            print(f"Porcentaje {congresos[i]}: {round(len(interseccion)/len(conjuntos[i])*100,2)} %")
+            print(f"Porcentaje {congresos[j]}: {round(len(interseccion)/len(conjuntos[j])*100,2)} %")
+            print("================================")
+            
 
     for r in range(3, len(conjuntos) + 1):
         for combo in combinations(range(len(conjuntos)), r):
@@ -96,7 +100,6 @@ def search_comparison_per_year(file, options, start_year, num_years):
             print(f"{nombres_congresos}: {len(interseccion)}")
 
 
-
 if __name__== "__main__":
 
     # year = datetime.today().year
@@ -104,8 +107,9 @@ if __name__== "__main__":
     for opt in datos:
         print("================================")
         print("             ", opt)
-        print(sort_print(authors_some_year("out.json", 2024, 40, opt)))
+        res = authors_some_year("out.json", 2023, 1, opt)
+        print(sort_print(res))
 
 
     datos = ["MSR","SANER,CSMR","ICSME","ESEM","MODELS"]
-    search_comparison_per_year('out.json', ["MSR","SANER","ICSME","ESEM","MODELS"], 2023 , 10)
+    search_comparison_per_year('out.json', ["MSR","SANER","ICSME","ESEM","MODELS"], 2023 , 50)
